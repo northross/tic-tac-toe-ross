@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tik-Tok-Bomb</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,35 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tik-Tok-Bomb</h1>
+      <p id='message'>
+      <form id="sign-up" class="border">
+          <fieldset>
+            <input type="text" name="credentials[email]" placeholder="sign_up@email.com">
+            <input type="password" name="credentials[password]" placeholder="create password">
+            <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+            <input type="submit" value="Sign-Up!">
+          </fieldset>
+      </form>
+
+      <form id="sign-in" class="border">
+          <fieldset>
+            <input type="text" name="credentials[email]" placeholder="sign_in@email.com">
+            <input type="password" name="credentials[password]" placeholder="enter password">
+            <input type="submit" value="Sign-In!">
+          </fieldset>
+      </form>
+
+      <form id="change-password" class="border">
+          <fieldset>
+            <input type="text" name="passwords[old]" placeholder="current password">
+            <input type="text" name="passwords[new]" placeholder="new password">
+            <input type="submit" value="Change Password!" placeholder="Change Password">
+          </fieldset>
+      </form>
+
+      <form id="sign-out" class="border">
+            <input type="submit" value="Sign-Out!">
+      </form>
     </body>
 </html>
