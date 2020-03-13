@@ -5,7 +5,7 @@ curl "https://tic-tac-toe-wdi.herokuapp.com/change-password" \
   --request PATCH \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
-  --date '{
+  --data '{
     "passwords" {
       "old": "'"${OLDPW}"'",
       "new": "'"${NEWPW}"'"
