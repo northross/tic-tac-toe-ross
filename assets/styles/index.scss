@@ -1,16 +1,42 @@
 @import '~bootstrap/scss/bootstrap';
 
+header {
+  text-align: right;
+}
+* {
+  font-family: 'Poiret One', cursive;
+}
+
+#note, h1{
+  text-align: center;
+}
+
+#new-game {
+  text-align: center;
+}
+
+h1 {
+  font-size: 6em;
+}
+
+
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: 200px;
-
-}
-.grid {
   background-color: #000;
+  color: #fff;
+  display: none;
+}
+
+.grid div{
+  font-family: arial;
+  font-size: 12rem;
+  text-align: auto;
 }
 .grid > div:nth-child(odd) {
   background-color: #fff;
+  color: #000;
 }
 
 .grid > input {
@@ -18,5 +44,11 @@
   font-size: 18px;
   border:10px;
 }
+
+// .grid > input {
+//   padding:10px;
+//   font-size: 18px;
+//   border:10px;
+// }
 
 //
