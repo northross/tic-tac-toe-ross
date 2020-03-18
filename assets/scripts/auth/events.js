@@ -53,7 +53,7 @@ const onChangePassword = function (event) {
   event.preventDefault()
   console.log('Password Change')
   // const data = getFormFields(event.target)
-  api.changePassword()
+  api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
@@ -107,16 +107,16 @@ const test = function () {
     // console.log('winner determined')
     $('#note').text('Player ' + winningPlayer + ' has won!')
     return true
-  } else if (scores.every(num => num === 'X' || num === 'O') && winningPlayer === '') {
-    $('#note').text("It's a Tie!")
-    console.log('Tie')
-    return true
-  }
+  // } else if (scores.every(num => num === 'X' || num === 'O') && winningPlayer === '') {
+  //   $('#note').text("It's a Tie!")
+  //   console.log('Tie')
+  //   return true
+  // }
 }
 
 // for (let i=0; i <= scores.length; i++) {
 //   scores[i] !== ''
-
+}
 
 
 const onClickN = function (cellNum) {
