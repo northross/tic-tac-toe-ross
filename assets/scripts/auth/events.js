@@ -11,7 +11,6 @@ let player = 'X'
 
 const onNewGame = function (event) {
   event.preventDefault()
-  console.log('NEW GAME CLICKED')
   winningPlayer = ''
   $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   scores = ["", "", "", "", "", "", "", "", ""]
@@ -19,15 +18,14 @@ const onNewGame = function (event) {
   api.newGame()
     .then(ui.newGameSelectSuccess)
     .catch(ui.newGameSelectFailure)
-  console.log(store)
   player = 'X'
 }
 
 const onSignUp = function (event) {
   event.preventDefault()
-  console.log('Signing Up')
+  // console.log('Signing Up')
   const data = getFormFields(event.target)
-  console.log(data)
+  // console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -35,7 +33,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  console.log('Signed In')
+  // console.log('Signed In')
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -44,7 +42,7 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('Sign Out')
+  // console.log('Sign Out')
   $('.grid').hide()
   api.signOut()
     .then(ui.signOutSuccess)
@@ -54,8 +52,8 @@ const onSignOut = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
   console.log('Password Change')
-  const data = getFormFields(event.target)
-  api.changePassword(data)
+  // const data = getFormFields(event.target)
+  api.changePassword()
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
@@ -63,42 +61,42 @@ const onChangePassword = function (event) {
 const test = function () {
   // top row
   if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
-    console.log('winner top row')
+    // console.log('winner top row')
     winningPlayer = scores[0]
     // left column
     // return true
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[0]
     //left diagonal
     // return true
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[4] && scores[0] === scores[8]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[0]
     // middle column
     // return true
   } else if ((scores[1]==='X'|| scores[1]==='O') && scores[1] === scores[4] && scores[1] === scores[7]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[1]
     // right diagonal
     // return true
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[4] && scores[2] === scores[6]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[2]
     // // right column
     // return true
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[5] && scores[2] === scores[8]) {
-    console.log('winner pl')
+    // console.log('winner pl')
     winningPlayer = scores[2]
     // middle row
       // return true
   } else if ((scores[3]==='X'|| scores[3]==='O') && scores[3] === scores[4] && scores[3] === scores[5]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[3]
     // Bottom row
     // return true
   } else if ((scores[6]==='X'|| scores[6]==='O') && scores[6] === scores[7] && scores[6] === scores[8]) {
-    console.log('winner')
+    // console.log('winner')
     winningPlayer = scores[6]
     // return true
   }
@@ -106,26 +104,21 @@ const test = function () {
   if (winningPlayer === '') {
     return false
   } else if (winningPlayer === 'O' || winningPlayer === 'X') {
-    console.log('winner determined')
+    // console.log('winner determined')
     $('#note').text('Player ' + winningPlayer + ' has won!')
     return true
-  } else if (scores.every(num => num !== '') && winningPlayer === '') {
+  } else if (scores.every(num => num === 'X' || num === 'O') && winningPlayer === '') {
     $('#note').text("It's a Tie!")
     console.log('Tie')
     return true
   }
 }
 
-for (let i=0; i <= scores.length; i++) {
-  scores[i] !== ''
-}
+// for (let i=0; i <= scores.length; i++) {
+//   scores[i] !== ''
 
-// const isBelowThreshold = (currentValue) => currentValue < 40;
-//
-// const array1 = [1, 30, 39, 29, 10, 13];
-//
-// console.log(array1.every(isBelowThreshold));
-// // expected output: true
+
+
 const onClickN = function (cellNum) {
   event.preventDefault()
   if (winningPlayer !== '') return
