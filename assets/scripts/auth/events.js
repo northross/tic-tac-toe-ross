@@ -5,12 +5,29 @@ const store = require('../store')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-const scores = ["", "", "", "", "", "", "", "", "", ""]
+let scores = ["", "", "", "", "", "", "", "", ""]
+let winningPlayer = ''
+let player = 'X'
+
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('NEW GAME CLICKED')
+  winningPlayer = ''
+  $('.grid').show(()=>{$('.grid').css('display', 'grid')})
+  scores = ["", "", "", "", "", "", "", "", ""]
+  const data = getFormFields(event.target)
+  api.newGame()
+    .then(ui.newGameSelectSuccess)
+    .catch(ui.newGameSelectFailure)
+  console.log(store)
+  player = 'X'
+}
 
 const onSignUp = function (event) {
   event.preventDefault()
   console.log('Signing Up')
   const data = getFormFields(event.target)
+  console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -28,6 +45,7 @@ const onSignIn = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Sign Out')
+  $('.grid').hide()
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -43,269 +61,127 @@ const onChangePassword = function (event) {
 }
 
 const test = function () {
-if ((scores[0]==='x'|| scores[0]==='o') && scores[0] === scores[1] && scores[0] === scores[2]) {
-  console.log('winner from 1')
-  return true
-} else if ((scores[0]==='x'|| scores[0]==='o') && scores[0] === scores[3] && scores[0] === scores[6]) {
+  // top row
+  if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
+    console.log('winner top row')
+    winningPlayer = scores[0]
+    // left column
+    // return true
+  } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
     console.log('winner')
-    return true
-  } else if((scores[0]==='x'|| scores[0]==='o') && scores[0] === scores[4] && scores[0] === scores[3]) {
+    winningPlayer = scores[0]
+    //left diagonal
+    // return true
+  } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[4] && scores[0] === scores[8]) {
     console.log('winner')
-    return true
-  } else if((scores[1]==='x'|| scores[1]==='o') && scores[1] === scores[4] && scores[1] === scores[7]) {
+    winningPlayer = scores[0]
+    // middle column
+    // return true
+  } else if ((scores[1]==='X'|| scores[1]==='O') && scores[1] === scores[4] && scores[1] === scores[7]) {
     console.log('winner')
-    return true
-  } else if((scores[2]==='x'|| scores[2]==='o') && scores[2] === scores[4] && scores[2] === scores[6]) {
+    winningPlayer = scores[1]
+    // right diagonal
+    // return true
+  } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[4] && scores[2] === scores[6]) {
     console.log('winner')
-    return true
-  } else if((scores[2]==='x'|| scores[2]==='o') && scores[2] === scores[5] && scores[2] === scores[8]) {
+    winningPlayer = scores[2]
+    // // right column
+    // return true
+  } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[5] && scores[2] === scores[8]) {
+    console.log('winner pl')
+    winningPlayer = scores[2]
+    // middle row
+      // return true
+  } else if ((scores[3]==='X'|| scores[3]==='O') && scores[3] === scores[4] && scores[3] === scores[5]) {
     console.log('winner')
-    return true
-  } else if((scores[3]==='x'|| scores[3]==='o') && scores[3] === scores[4] && scores[3] === scores[5]) {
+    winningPlayer = scores[3]
+    // Bottom row
+    // return true
+  } else if ((scores[6]==='X'|| scores[6]==='O') && scores[6] === scores[7] && scores[6] === scores[8]) {
     console.log('winner')
-    return true
-  } else if((scores[6]==='x'|| scores[6]==='o') && scores[6] === scores[7] && scores[6] === scores[8]) {
-    console.log('winner')
-    return true
-  } else {
+    winningPlayer = scores[6]
+    // return true
+  }
+
+  if (winningPlayer === '') {
     return false
+  } else if (winningPlayer === 'O' || winningPlayer === 'X') {
+    console.log('winner determined')
+    $('#note').text('Player ' + winningPlayer + ' has won!')
+    return true
+  } else if (scores.every(num => num !== '') && winningPlayer === '') {
+    $('#note').text("It's a Tie!")
+    console.log('Tie')
+    return true
   }
 }
 
-let player = 'x'
+for (let i=0; i <= scores.length; i++) {
+  scores[i] !== ''
+}
+
+// const isBelowThreshold = (currentValue) => currentValue < 40;
+//
+// const array1 = [1, 30, 39, 29, 10, 13];
+//
+// console.log(array1.every(isBelowThreshold));
+// // expected output: true
+const onClickN = function (cellNum) {
+  event.preventDefault()
+  if (winningPlayer !== '') return
+  if (player === 'X') {
+    if (scores[cellNum] === '' && test() === false) {
+      scores[cellNum] = 'X'
+      $('#' + cellNum).text('X')
+      api.updateGame(cellNum, player)
+      player = 'O'
+      ui.boardPosession(player)
+      test()
+    }
+  } else {
+    if (player === 'O') {
+    if (scores[cellNum] === '' && test() === false) {
+      scores[cellNum] = 'O'
+      $('#'+ cellNum).text('O')
+      api.updateGame(cellNum, player)
+      player = 'X'
+      ui.boardPosession(player)
+      test()
+      }
+    }
+  }
+}
 
 const onClick0 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[0] === '' && test() === false) {
-      $('#0').text('x')
-      scores[0] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[0] === '' && test() === false) {
-      $('#0').text('o')
-      scores[0] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(0)
 }
-
 const onClick1 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[1] === '' && test() === false) {
-      $('#1').text('x')
-      scores[1] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[1] === '' && test() === false) {
-      $('#1').text('o')
-      scores[1] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(1)
 }
-
 const onClick2 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[2] === '' && test() === false) {
-      $('#2').text('x')
-      scores[2] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[2] === '' && test() === false) {
-      $('#2').text('o')
-      scores[2] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(2)
 }
-
 const onClick3 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[3] === '' && test() === false) {
-      $('#3').text('x')
-      scores[3] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[3] === '' && test() === false) {
-      $('#3').text('o')
-      scores[3] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(3)
 }
-
 const onClick4 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[4] === '' && test() === false) {
-      $('#4').text('x')
-      scores[4] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[4] === '' && test() === false) {
-      $('#4').text('o')
-      scores[4] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(4)
 }
-
 const onClick5 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[5] === '' && test() === false) {
-      $('#5').text('x')
-      scores[5] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[5] === '' && test() === false) {
-      $('#5').text('o')
-      scores[5] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(5)
 }
-
 const onClick6 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[6] === '' && test() === false) {
-      $('#6').text('x')
-      scores[6] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[6] === '' && test() === false) {
-      $('#6').text('o')
-      scores[6] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(6)
 }
-
 const onClick7 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[7] === '' && test() === false) {
-      $('#7').text('x')
-      scores[7] = 'x'
-      player = 'o'
-      console.log(player)
-      console.log(store)
-      test()
-    }
-  } else {
-    if (scores[7] === '' && test() === false) {
-      $('#7').text('o')
-      scores[7] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(7)
 }
-
 const onClick8 = function (event) {
-  event.preventDefault()
-  if (player === 'x') {
-    if (scores[8] === '' && test() === false) {
-      $('#8').text('x')
-      scores[8] = 'x'
-      player = 'o'
-      console.log(store)
-      console.log(player)
-      test()
-    }
-  } else {
-    if (scores[8] === '' && test() === false) {
-      $('#8').text('o')
-      scores[8] = 'o'
-      player = 'x'
-      console.log(store)
-      test()
-    }
-  }
+  onClickN(8)
 }
 
-// const onClick = function (event) {
-//   event.preventDefault()
-//   // if ()
-//   $('#2').text('o')
-// }
-// const array = ["", "", "", "", "", "", "", "", ""]
+  // const board = scores.splice([boxID], 0, 'X')
 
-// const onClick = function (event) {
-//   event.preventDefault()
-//   let i = 0
-//     if (i % 2 = 0) {
-//     // array[ID].splice([array[ID], 0, "x")
-//     $('.box').text('x')
-//   }
-//   // } else if (i % 2 = 1) {
-//   //   games.cell[].splice([array id], 0, "o")
-//   // })
-//     // } else if (i % 2 = 1) {
-//     //
-//     // }
-//     // i += 1
-//   console.log('onClick does something')
-//   console.log(i)
-//   // if ([element] !== 'o' || [element] !== 'x') {
-//   // games.cells[0].getElementbyId
-//   }
-
-  // const board = store.game.cells.splice([boxID], 0, 'x')
-
-
-
-//
-// Add a click handler for when a space on the game board is clicked
-// If the user clicks on a valid space then add their X or O
 // Do not allow users to add an X or O to an invalid space
 
 module.exports = {
@@ -321,14 +197,7 @@ module.exports = {
   onClick5,
   onClick6,
   onClick7,
-  onClick8
+  onClick8,
+  onNewGame,
+  test
 }
-
-
-// $('#change-my-text').on('click', function (event) {
-//     console.log()
-//     $('#change-my-text').text('some text')
-//   })
-// document.getElementsByClass(.click).onClick = function (event) {
-//   console.log('on click works')
-// }
