@@ -11,7 +11,9 @@ let player = 'X'
 
 const onNewGame = function (event) {
   event.preventDefault()
+  // $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   winningPlayer = ''
+  console.log('event')
   $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   scores = ["", "", "", "", "", "", "", "", ""]
   const data = getFormFields(event.target)
@@ -23,9 +25,7 @@ const onNewGame = function (event) {
 
 const onSignUp = function (event) {
   event.preventDefault()
-  // console.log('Signing Up')
   const data = getFormFields(event.target)
-  // console.log(data)
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -33,7 +33,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  // console.log('Signed In')
+  $('.rules').show(()=>{$('.rules').css('display', 'rules')})
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -42,7 +42,6 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  // console.log('Sign Out')
   $('.grid').hide()
   api.signOut()
     .then(ui.signOutSuccess)
@@ -51,73 +50,68 @@ const onSignOut = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('Password Change')
-  // const data = getFormFields(event.target)
+  const data = getFormFields(event.target)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
 }
 
+// Test guide: this block will test for each winning combination on the board
+// Note: Test() function is called within the onClick() function
 const test = function () {
-  // top row
   if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
-    // console.log('winner top row')
     winningPlayer = scores[0]
-    // left column
-    // return true
+// top row
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
-    // console.log('winner')
     winningPlayer = scores[0]
-    //left diagonal
-    // return true
+// left column
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[4] && scores[0] === scores[8]) {
-    // console.log('winner')
     winningPlayer = scores[0]
-    // middle column
-    // return true
+//left diagonal
   } else if ((scores[1]==='X'|| scores[1]==='O') && scores[1] === scores[4] && scores[1] === scores[7]) {
-    // console.log('winner')
     winningPlayer = scores[1]
-    // right diagonal
-    // return true
+// middle column
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[4] && scores[2] === scores[6]) {
-    // console.log('winner')
     winningPlayer = scores[2]
-    // // right column
-    // return true
+// right diagonal
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[5] && scores[2] === scores[8]) {
-    // console.log('winner pl')
     winningPlayer = scores[2]
-    // middle row
-      // return true
+// right column
   } else if ((scores[3]==='X'|| scores[3]==='O') && scores[3] === scores[4] && scores[3] === scores[5]) {
-    // console.log('winner')
     winningPlayer = scores[3]
-    // Bottom row
-    // return true
+// middle row
   } else if ((scores[6]==='X'|| scores[6]==='O') && scores[6] === scores[7] && scores[6] === scores[8]) {
-    // console.log('winner')
     winningPlayer = scores[6]
-    // return true
+// bottom row
   }
-
-  if (winningPlayer === '') {
-    return false
+// this whole block will:
+ // 1. test for a tie
+ // 2. confirm and report a winningPlayer
+ // 3. also confirm that there is no winningPlayer
+  if (scores.every(num => num !== '') && winningPlayer === '') {
+    $('#note').text("It's a Tie! Play Again!")
+    return true
   } else if (winningPlayer === 'O' || winningPlayer === 'X') {
-    // console.log('winner determined')
     $('#note').text('Player ' + winningPlayer + ' has won!')
     return true
-  // } else if (scores.every(num => num === 'X' || num === 'O') && winningPlayer === '') {
-  //   $('#note').text("It's a Tie!")
-  //   console.log('Tie')
-  //   return true
-  // }
+  } else if (winningPlayer === '') {
+    return false
+  }
 }
 
-// for (let i=0; i <= scores.length; i++) {
-//   scores[i] !== ''
-}
+// onClick Guide
+// 1. user clicks a square (cellnum)
+// 2. if winningPlayer has been determined, refuse action
+//
+// If player X
+// 1. ensure that the place on the board is empty and test for a winningPlayer
+// 2. give value X to the array 'Scores'
+// 3. put and 'X' on the game board
+// 4. API should store the value for the games
+// 5. reassign the value of player to 'O'
+// 6. message on screen tells user which player has next turn
 
+// Actions 1-6 above are repeated for player 'O'
 
 const onClickN = function (cellNum) {
   event.preventDefault()
@@ -145,6 +139,8 @@ const onClickN = function (cellNum) {
   }
 }
 
+// Each of these functions runs through the onClick function above,
+// entering the board/array value as the cellNum value
 const onClick0 = function (event) {
   onClickN(0)
 }
@@ -172,10 +168,6 @@ const onClick7 = function (event) {
 const onClick8 = function (event) {
   onClickN(8)
 }
-
-  // const board = scores.splice([boxID], 0, 'X')
-
-// Do not allow users to add an X or O to an invalid space
 
 module.exports = {
   onSignUp,
