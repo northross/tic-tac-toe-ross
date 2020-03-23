@@ -5,20 +5,75 @@ header {
 }
 * {
   font-family: 'Poiret One', cursive;
+  box-shadow: none;
+}
+
+#note {
+  font-size: 1.5em;
 }
 
 #note, h1{
   text-align: center;
 }
+.blackWithWhite {
+  border-style: groove;
+  border-width: 2px;
+  border-color: #181818;
+  background-color: #181818;
+  color: #ffffff;
+}
+
+input {
+  box-shadow: none;
+}
+p span {
+  background-color: #b5b7bb;
+}
+
+
+.whiteWithBlack {
+  border-style: groove;
+  border-width: 2px;
+  border-color: #a33535;
+  background-color: #ffffff;
+  color: #181818;
+}
+
+input[type="submit"] {
+  border: none;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #181818;
+}
+
+.odd {
+  color: #a5a5a5;
+}
+.even {
+  color: #444444;
+}
+
+p {
+  margin: 20px 60px 0 60px;
+  font-size: 1em;
+}
 
 #new-game {
   text-align: center;
+  box-shadow: none;
 }
 
 h1 {
-  font-size: 6em;
+  font-size: 8em;
+  font-weight: strong;
+  margin-bottom: 0;
 }
 
+header {
+
+}
 
 .grid {
   display: grid;
@@ -27,6 +82,7 @@ h1 {
   background-color: #000;
   color: #fff;
   display: none;
+  vertical-align: middle;
 }
 
 .grid div{
@@ -39,11 +95,11 @@ h1 {
   color: #000;
 }
 
-.grid > input {
-  padding:10px;
-  font-size: 18px;
-  border:10px;
-}
+// .grid > input {
+//   padding:10px;
+//   font-size: 18px;
+//   border:10px;
+// }
 
 // .grid > input {
 //   padding:10px;
