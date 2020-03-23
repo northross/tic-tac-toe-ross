@@ -16,35 +16,34 @@
       <header>
         <form id="sign-up" class="border">
             <fieldset>
-              <input type="text" name="credentials[email]" placeholder="sign_up@email.com">
-              <input type="password" name="credentials[password]" placeholder="create password">
-              <input type="password" name="credentials[password_confirmation]" placeholder="confirm password">
+              <input class="blackWithWhite" type="text" name="credentials[email]" placeholder="sign_up@email.com">
+              <input class="whiteWithBlack" type="password" name="credentials[password]" placeholder="create password">
+              <input class="blackWithWhite" type="password" name="credentials[password_confirmation]" placeholder="confirm password">
               <input type="submit" value="Sign-Up!">
             </fieldset>
         </form>
         <form id="sign-in" class="border">
             <fieldset>
-              <input type="text" name="credentials[email]" placeholder="sign_in@email.com">
-              <input type="password" name="credentials[password]" placeholder="enter password">
+              <input class="blackWithWhite" type="text" name="credentials[email]" placeholder="sign_in@email.com">
+              <input class="whiteWithBlack" type="password" name="credentials[password]" placeholder="enter password">
               <input type="submit" value="Sign-In!">
             </fieldset>
         </form>
       </header>
       <h1>Tic-Tac-Toe</h1>
-      <p id='note'></p>
-
+      <p style="background-color: #b5b7bb" id='note'><span></span></p>
       <form id="new-game" class="border">
-            <input type="submit" value="New Game!">
+        <input type="submit" value="New Game!">
       </form>
-      <!-- <div class="rules"> -->
-        <!-- <p>RULES FOR TIC-TAC-TOE.
-1. The game is played on a grid that's 3 squares by 3 squares.
-2. You are X, your 'friend' is O.
-3. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.
-4. When all 9 squares are full, the game is over.
-5. When you, or your 'friend', loses, agree to play best out of three, giving the loser of the game the benefit of the doubt.
-6. Play again
-7.</p> -->
+      <div class="rules">
+      <p class="game rules">Rules of the game..............................................</p>
+<p class="odd"> 1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get three of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+<p class="even"> 1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get three of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+<p class="odd"> 1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get three of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+<p class="even"> 1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get three of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+<p class="odd"> 1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get threI e of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+<p class="even">  1. The game is played on a grid that's three squares by thtree squares. 2. You are X, your 'friend' is O. 3. Alternating turns, select a square to place your mark. 4. The first player to get three of her marks in a row (up, down, across, or diagonally) is the winner. 5. When all nine squares are full, the game is over. 6. Play again. 7. Was there a tie? Play best out of three!</p>
+      </div>
       <div class="grid">
         <div class="0" id=0></div>
         <div class="1" id=1></div>
@@ -59,8 +58,8 @@
       <footer>
         <form id="change-password" class="border">
             <fieldset>
-              <input type="text" name="passwords[old]" placeholder="current password">
-              <input type="text" name="passwords[new]" placeholder="new password">
+              <input class="blackWithWhite" type="text" name="passwords[old]" placeholder="current password">
+              <input class="whiteWithBlack" type="text" name="passwords[new]" placeholder="new password">
               <input type="submit" value="Change Password!" placeholder="Change Password">
             </fieldset>
         </form>
