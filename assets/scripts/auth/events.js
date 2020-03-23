@@ -89,7 +89,7 @@ const test = function () {
  // 2. confirm and report a winningPlayer
  // 3. also confirm that there is no winningPlayer
   if (scores.every(num => num !== '') && winningPlayer === '') {
-    $('#note').text("It's a Tie! Play Again!")
+    $('#note').text("It's a Tie! Play again!")
     return true
   } else if (winningPlayer === 'O' || winningPlayer === 'X') {
     $('#note').text('Player ' + winningPlayer + ' has won!')

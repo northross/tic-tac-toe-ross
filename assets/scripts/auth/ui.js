@@ -69,9 +69,9 @@ const changePasswordSuccess = function (data) {
   $('#note').removeClass()
   $('#note').addClass('Password Change: Successful!')
   $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
-  console.log('changePassword data is: ', data)
-  console.log(store)
+  $('form input[type="password"]').val('')
+  // console.log('changePassword data is: ', data)
+  // console.log(store)
 }
 
 const changePasswordFailure = function (error) {
@@ -79,8 +79,8 @@ const changePasswordFailure = function (error) {
   $('#note').removeClass()
   $('#note').addClass('Password Change: Unsuccessful!')
   $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
-  console.log('changePassword data is: ', error)
+  $('form input[type="password"]').val('')
+  // console.log('changePassword data is: ', error)
 }
 
 
@@ -94,6 +94,7 @@ const signOutSuccess = function (data) {
   $('#change-password').hide()
   $('#sign-out').hide()
   $('.grid').hide()
+  $('#new-game').hide()
   $('#sign-in').show()
   $('#sign-up').show()
 }
@@ -109,9 +110,6 @@ const signOutFailure = function (error) {
 
 const boardPosession = function (turn) {
   $('#note').text('It is Player ' + turn + "'s turn!")
-// }
- // const click = (function) ()
- // $('#grid').text(player + ' selected a square!')
 }
 
 
