@@ -25,7 +25,7 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log('In api.js')
+  console.log('Change pass can lis')
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -49,7 +49,7 @@ const signOut = function () {
 
 const newGame = function (data) {
   console.log(data)
-  console.log('In api.js')
+  // console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
@@ -59,8 +59,9 @@ const newGame = function (data) {
   })
 }
 
-const updateGame = function (spot, player) {
-  console.log('updateGame')
+const updateGame = function (cellNum, player) {
+  // console.log('updateGame')
+  console.log(store)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
@@ -69,7 +70,7 @@ const updateGame = function (spot, player) {
     }, data: {
     "game": {
       "cell": {
-        "index": spot,
+        "index": cellNum,
         "value": player
       },
       "over": false
