@@ -13,7 +13,6 @@ const onNewGame = function (event) {
   event.preventDefault()
   // $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   winningPlayer = ''
-  console.log('event')
   $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   scores = ["", "", "", "", "", "", "", "", ""]
   const data = getFormFields(event.target)
