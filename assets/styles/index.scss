@@ -15,6 +15,7 @@ header {
   background-color: rgba(181, 183, 187, .5);
   margin: 0;
   border-style: groove;
+  border-color: #181818;
 }
 
 #note, #new-game, h1, p {
@@ -71,7 +72,7 @@ input[type="submit"] {
   color: #181818;
   background-color: rgba(181, 183, 187, .25);
   text-align: justify;
-  margin: 25px 70px 80px 70px;
+  margin: 15px 70px 80px 70px;
   padding: 30px;
   font-family: 'Lora', serif;
   border-style: ridge;
@@ -89,12 +90,12 @@ p {
 }
 
 #new-game {
-  margin: 15px;
+  margin: 10px;
 }
 
 h1 {
   font-size: 8em;
-  margin-bottom: 0 20px 30px 20px;
+  margin-bottom: 0 20px 40px 20px;
   background-color: rgba(181, 183, 187, .5);
   letter-spacing: .09em;
   border-style: groove;
@@ -109,6 +110,8 @@ h1 {
   color: #fff;
   display: none;
   vertical-align: middle;
+  padding-bottom: 0px;
+  margin-bottom: 20px;
 }
 
 .grid div{
