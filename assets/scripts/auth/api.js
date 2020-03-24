@@ -6,8 +6,6 @@ const store = require('../store')
 const ui = require('./ui.js')
 
 const signUp = function (credentials) {
-  console.log('Sign up', credentials)
-  console.log(config.apiUrl + '/sign-up')
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -16,7 +14,6 @@ const signUp = function (credentials) {
 }
 
 const signIn = function (data) {
-  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -25,7 +22,6 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log('Change pass can lis')
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -37,7 +33,6 @@ const changePassword = function (data) {
 }
 
 const signOut = function () {
-  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -48,7 +43,6 @@ const signOut = function () {
 }
 
 const newGame = function (data) {
-  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
@@ -59,8 +53,6 @@ const newGame = function (data) {
 }
 
 const updateGame = function (cellNum, player) {
-  // console.log('updateGame')
-  console.log(store)
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',
