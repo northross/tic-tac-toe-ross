@@ -24,12 +24,10 @@ const newGameSelectFailure = function (data) {
 }
 
 const updateGameSuccess = function (data) {
-  console.log('updated game')
   store.game = data.game
 }
 
 const updateGameFailure = function (error) {
-  console.log('update failure')
 }
 
 const signUpSuccess = function (data) {
@@ -39,7 +37,7 @@ const signUpSuccess = function (data) {
   $('#note').removeClass()
   $('#note').addClass('Sign-Up: Success!')
   $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
+  $('form input[type="password"]').val('')
 }
 
 const signUpFailure = function (error) {
@@ -48,7 +46,6 @@ const signUpFailure = function (error) {
   $('#note').addClass('Sign-Up: incomplete!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-  console.log('signUpFailure error is: ', error)
 }
 
 const signInSuccess = function (data) {
@@ -57,8 +54,7 @@ const signInSuccess = function (data) {
   $('#note').removeClass()
   $('#note').addClass('Sign-In: success!')
   $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
-  console.log('signInSuccess data is: ', data)
+  $('form input[type="password"]').val('')
   store.user = data.user
   $('.grid').show()
   $('#change-password').show()
@@ -73,8 +69,8 @@ const signInFailure = function (error) {
   $('#note').removeClass()
   $('#note').addClass('Sign-In: Unsuccessful!')
   $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
-  console.log('signInFailure error is: ', error)
+  $('form input[type="password"]').val('')
+
 }
 
 const changePasswordSuccess = function (data) {
@@ -83,8 +79,6 @@ const changePasswordSuccess = function (data) {
   $('#note').addClass('Password Change: Successful!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-  // console.log('changePassword data is: ', data)
-  // console.log(store)
 }
 
 const changePasswordFailure = function (error) {
@@ -93,7 +87,6 @@ const changePasswordFailure = function (error) {
   $('#note').addClass('Password Change: Unsuccessful!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-  // console.log('changePassword data is: ', error)
 }
 
 
