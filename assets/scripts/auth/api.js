@@ -49,7 +49,6 @@ const signOut = function () {
 
 const newGame = function (data) {
   console.log(data)
-  // console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',

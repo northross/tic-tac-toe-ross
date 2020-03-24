@@ -115,12 +115,17 @@ const test = function () {
 
 const onClickN = function (cellNum) {
   event.preventDefault()
-  if (winningPlayer !== '') return
+  if (winningPlayer !== '')
+    // $('#note').text('Sorry, invalid move... try another!')
+    return
+
   if (player === 'X') {
     if (scores[cellNum] === '' && test() === false) {
       scores[cellNum] = 'X'
       $('#' + cellNum).text('X')
       api.updateGame(cellNum, player)
+        .then(ui.updateGameSuccess)
+        .catch(ui.updateGameFailure)
       player = 'O'
       ui.boardPosession(player)
       test()
@@ -131,6 +136,8 @@ const onClickN = function (cellNum) {
       scores[cellNum] = 'O'
       $('#'+ cellNum).text('O')
       api.updateGame(cellNum, player)
+        .then(ui.updateGameSuccess)
+        .catch(ui.updateGameFailure)
       player = 'X'
       ui.boardPosession(player)
       test()

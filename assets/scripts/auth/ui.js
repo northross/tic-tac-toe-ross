@@ -3,17 +3,10 @@
 const store = require('../store')
 const events = require('./events')
 
-const signUpSuccess = function (data) {
-  $('#note').text('You have Signed-Up Successfully!')
-  $('#note').text("Please 'Sign-In' to Play!")
-  $('#note').removeClass()
-  $('#note').addClass('Sign-Up: Success!')
-  $('form input[type="text"]').val('')
-$('form input[type="password"]').val('')
-  console.log('signUpSuccess data is: ', data)
-}
+
 
 const newGameSelectSuccess = function (data) {
+  $('#pregame').hide()
   $('#note').text('Player X, Let the Games Begin!')
   for (let i = 0; i < 9; i++) {
   $('#' + i).text('')
@@ -30,6 +23,25 @@ const newGameSelectFailure = function (data) {
   store.game = data.game
 }
 
+const updateGameSuccess = function (data) {
+  console.log('updated game')
+  store.game = data.game
+}
+
+const updateGameFailure = function (error) {
+  console.log('update failure')
+}
+
+const signUpSuccess = function (data) {
+  $('#note').show()
+  $('#note').text('You have Signed-Up Successfully!')
+  $('#note').text("Please 'Sign-In' to Play!")
+  $('#note').removeClass()
+  $('#note').addClass('Sign-Up: Success!')
+  $('form input[type="text"]').val('')
+$('form input[type="password"]').val('')
+}
+
 const signUpFailure = function (error) {
   $('#note').text('Sign-Up was Unsuccessful')
   $('#note').removeClass()
@@ -40,6 +52,7 @@ const signUpFailure = function (error) {
 }
 
 const signInSuccess = function (data) {
+  $('#note').show()
   $('#note').text('You have Signed-In Successfully!')
   $('#note').removeClass()
   $('#note').addClass('Sign-In: success!')
@@ -90,7 +103,6 @@ const signOutSuccess = function (data) {
   $('#note').addClass('Sign-Out: Successful!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-  console.log('signOutSuccess data is: ', data)
   $('#change-password').hide()
   $('#sign-out').hide()
   $('.grid').hide()
@@ -105,13 +117,11 @@ const signOutFailure = function (error) {
   $('#note').addClass('Sign-Out: Unsuccessful!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-  console.log('signOutFailure data is: ', error)
 }
 
 const boardPosession = function (turn) {
   $('#note').text('It is Player ' + turn + "'s turn!")
 }
-
 
 module.exports = {
   signUpSuccess,
@@ -124,5 +134,7 @@ module.exports = {
   changePasswordFailure,
   boardPosession,
   newGameSelectSuccess,
-  newGameSelectFailure
+  newGameSelectFailure,
+  updateGameFailure,
+  updateGameSuccess
 }
