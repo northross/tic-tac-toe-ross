@@ -25,9 +25,11 @@ const newGameSelectFailure = function (data) {
 
 const updateGameSuccess = function (data) {
   store.game = data.game
+  console.log('update works')
 }
 
 const updateGameFailure = function (error) {
+  console.log('update doesnt work')
 }
 
 const signUpSuccess = function (data) {
@@ -116,6 +118,14 @@ const boardPosession = function (turn) {
   $('#note').text('It is Player ' + turn + "'s turn!")
 }
 
+const onClickSuccess = function () {
+  console.log("onclick works")
+}
+
+const onClickFailure = function () {
+  console.log('onclick does not work')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -129,5 +139,7 @@ module.exports = {
   newGameSelectSuccess,
   newGameSelectFailure,
   updateGameFailure,
-  updateGameSuccess
+  updateGameSuccess,
+  onClickSuccess,
+  onClickFailure
 }

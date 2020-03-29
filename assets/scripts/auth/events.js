@@ -60,27 +60,36 @@ const onChangePassword = function (event) {
 const test = function () {
   if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
     winningPlayer = scores[0]
+    // store.game.over === true
 // top row
+    // return true
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
     winningPlayer = scores[0]
 // left column
+    // return true
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[4] && scores[0] === scores[8]) {
     winningPlayer = scores[0]
 //left diagonal
+    // return true
   } else if ((scores[1]==='X'|| scores[1]==='O') && scores[1] === scores[4] && scores[1] === scores[7]) {
     winningPlayer = scores[1]
 // middle column
+    // return true
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[4] && scores[2] === scores[6]) {
     winningPlayer = scores[2]
 // right diagonal
+    // return true
   } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[5] && scores[2] === scores[8]) {
     winningPlayer = scores[2]
 // right column
+    // return true
   } else if ((scores[3]==='X'|| scores[3]==='O') && scores[3] === scores[4] && scores[3] === scores[5]) {
     winningPlayer = scores[3]
 // middle row
+    // return true
   } else if ((scores[6]==='X'|| scores[6]==='O') && scores[6] === scores[7] && scores[6] === scores[8]) {
     winningPlayer = scores[6]
+    // return true
 // bottom row
   }
 // this whole block will:
@@ -128,6 +137,7 @@ const onClickN = function (cellNum) {
       player = 'O'
       ui.boardPosession(player)
       test()
+      console.log(store)
     }
   } else {
     if (player === 'O') {
@@ -140,6 +150,7 @@ const onClickN = function (cellNum) {
       player = 'X'
       ui.boardPosession(player)
       test()
+      console.log(store)
       }
     }
   }
