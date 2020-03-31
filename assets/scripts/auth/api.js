@@ -69,6 +69,27 @@ const updateGame = function (cellNum, player) {
   }
   })
 }
+//
+// const getTotal = function (data) {
+//   return $.ajax({
+//     url: config.apiUrl + '/games/' + store.game.id,
+//     method: 'GET',
+//     headers: {
+//        Authorization: 'Token token=${TOKEN}'
+//     }, data: {
+//     "game": {
+//       "id": 3,
+//       "cells": ["","","","","","","","",""],
+//       "over": false,
+//       "player_x": {
+//         "id": 1,
+//         "email": "and@and.com"
+//       },
+//       "player_o": null
+//     }
+//     }
+//   })
+// }
 
 module.exports = {
   signUp,
@@ -77,4 +98,5 @@ module.exports = {
   changePassword,
   newGame,
   updateGame
+  // getTotal
 }

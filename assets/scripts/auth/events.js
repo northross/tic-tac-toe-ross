@@ -22,6 +22,13 @@ const onNewGame = function (event) {
   player = 'X'
 }
 
+const getGames = function (event) {
+  const data = api.getFormFields(event.target)
+  api.getTotal()
+    .then(ui.getGameSuccess)
+    .catch(ui.getGameFailure)
+}
+
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -60,7 +67,7 @@ const onChangePassword = function (event) {
 const test = function () {
   if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
     winningPlayer = scores[0]
-    // store.game.over === true
+    // return data.game.over === true
 // top row
     // return true
   } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
@@ -98,10 +105,10 @@ const test = function () {
  // 3. also confirm that there is no winningPlayer
   if (scores.every(num => num !== '') && winningPlayer === '') {
     $('#note').text("It's a Tie! Play again!")
-    return true
+    return store.game.over === true
   } else if (winningPlayer === 'O' || winningPlayer === 'X') {
     $('#note').text('Player ' + winningPlayer + ' has won!')
-    return true
+    return store.game.over === true
   } else if (winningPlayer === '') {
     return false
   }
@@ -123,6 +130,7 @@ const test = function () {
 
 const onClickN = function (cellNum) {
   event.preventDefault()
+  console.log(store)
   if (winningPlayer !== '')
     // $('#note').text('Sorry, invalid move... try another!')
     return
@@ -201,5 +209,6 @@ module.exports = {
   onClick7,
   onClick8,
   onNewGame,
+  // getGames,
   test
 }

@@ -3,7 +3,16 @@
 const store = require('../store')
 const events = require('./events')
 
-
+// const getGameSuccess = function (data) {
+//   console.log('get games worked')
+//   $('#note').text('Games Played: ${store.games.length}')
+//   store.game = data.game
+// }
+//
+// const getGameFailure = function (data) {
+//   console.log('get games failed')
+//   $('#note').text('Sorry, there was an error')
+// }
 
 const newGameSelectSuccess = function (data) {
   $('#pregame').hide()
@@ -64,6 +73,7 @@ const signInSuccess = function (data) {
   $('#new-game').show()
   $('#sign-in').hide()
   $('#sign-up').hide()
+  // $('#get-games').show()
 }
 
 const signInFailure = function (error) {
@@ -138,8 +148,10 @@ module.exports = {
   boardPosession,
   newGameSelectSuccess,
   newGameSelectFailure,
-  updateGameFailure,
-  updateGameSuccess,
+  // updateGameFailure,
+  // updateGameSuccess,
   onClickSuccess,
   onClickFailure
+  // getGameSuccess,
+  // getGameFailure
 }
