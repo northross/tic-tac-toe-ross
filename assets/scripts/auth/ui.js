@@ -16,30 +16,30 @@ const events = require('./events')
 
 const newGameSelectSuccess = function (data) {
   $('#pregame').hide()
+  $('.grid').show()
   $('#note').text('Player X, Let the Games Begin!')
   for (let i = 0; i < 9; i++) {
-  $('#' + i).text('')
+    $('#' + i).text('')
   }
-  $('.grid').show()
   store.game = data.game
 }
 
 const newGameSelectFailure = function (data) {
   $('#note').text('There is something wrong!')
   for (let i = 0; i < 9; i++) {
-  $('#' + i).text('')
+    $('#' + i).text('')
   }
   store.game = data.game
 }
 
-const updateGameSuccess = function (data) {
-  store.game = data.game
-  console.log('update works')
-}
-
-const updateGameFailure = function (error) {
-  console.log('update doesnt work')
-}
+// const updateGameSuccess = function (data) {
+//   store.game = data.game
+//   console.log('update works')
+// }
+//
+// const updateGameFailure = function (error) {
+//   console.log('update doesnt work')
+// }
 
 const signUpSuccess = function (data) {
   $('#note').show()
@@ -82,7 +82,6 @@ const signInFailure = function (error) {
   $('#note').addClass('Sign-In: Unsuccessful!')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
-
 }
 
 const changePasswordSuccess = function (data) {
@@ -101,7 +100,6 @@ const changePasswordFailure = function (error) {
   $('form input[type="password"]').val('')
 }
 
-
 const signOutSuccess = function (data) {
   $('#note').text('You have Signed-Out Successfully!')
   $('#note').removeClass()
@@ -114,6 +112,7 @@ const signOutSuccess = function (data) {
   $('#new-game').hide()
   $('#sign-in').show()
   $('#sign-up').show()
+  $('#pregame').show()
 }
 
 const signOutFailure = function (error) {
@@ -129,7 +128,7 @@ const boardPosession = function (turn) {
 }
 
 const onClickSuccess = function () {
-  console.log("onclick works")
+  console.log('onclick works')
 }
 
 const onClickFailure = function () {

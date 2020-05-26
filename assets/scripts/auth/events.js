@@ -5,16 +5,17 @@ const store = require('../store')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
-let scores = ["", "", "", "", "", "", "", "", ""]
+let scores = ['', '', '', '', '', '', '', '', '']
 let winningPlayer = ''
 let player = 'X'
 
 const onNewGame = function (event) {
   event.preventDefault()
+  console.log('newgame button worked')
   // $('.grid').show(()=>{$('.grid').css('display', 'grid')})
   winningPlayer = ''
   $('.grid').show(()=>{$('.grid').css('display', 'grid')})
-  scores = ["", "", "", "", "", "", "", "", ""]
+  scores = ['', '', '', '', '', '', '', '', '']
   const data = getFormFields(event.target)
   api.newGame()
     .then(ui.newGameSelectSuccess)
@@ -22,12 +23,12 @@ const onNewGame = function (event) {
   player = 'X'
 }
 
-const getGames = function (event) {
-  const data = api.getFormFields(event.target)
-  api.getTotal()
-    .then(ui.getGameSuccess)
-    .catch(ui.getGameFailure)
-}
+// const getGames = function (event) {
+//   const data = api.getFormFields(event.target)
+//   api.getTotal()
+//     .then(ui.getGameSuccess)
+//     .catch(ui.getGameFailure)
+// }
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -39,7 +40,7 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-  $('.rules').show(()=>{$('.rules').css('display', 'rules')})
+  // $('.rules').show(()=>{$('.rules').css('display', 'rules')})
   const data = getFormFields(event.target)
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -65,44 +66,44 @@ const onChangePassword = function (event) {
 // Test guide: this block will test for each winning combination on the board
 // Note: Test() function is called within the onClick() function
 const test = function () {
-  if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[1] && scores[0] === scores[2]) {
+  if ((scores[0] === 'X' || scores[0] === 'O') && scores[0] === scores[1] && scores[0] === scores[2]) {
     winningPlayer = scores[0]
     // return data.game.over === true
-// top row
+    // top row
     // return true
-  } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[3] && scores[0] === scores[6]) {
+  } else if ((scores[0] === 'X' || scores[0] === 'O') && scores[0] === scores[3] && scores[0] === scores[6]) {
     winningPlayer = scores[0]
-// left column
+    // left column
     // return true
-  } else if ((scores[0]==='X'|| scores[0]==='O') && scores[0] === scores[4] && scores[0] === scores[8]) {
+  } else if ((scores[0] === 'X' || scores[0] === 'O') && scores[0] === scores[4] && scores[0] === scores[8]) {
     winningPlayer = scores[0]
-//left diagonal
+    // left diagonal
     // return true
-  } else if ((scores[1]==='X'|| scores[1]==='O') && scores[1] === scores[4] && scores[1] === scores[7]) {
+  } else if ((scores[1] === 'X' || scores[1] === 'O') && scores[1] === scores[4] && scores[1] === scores[7]) {
     winningPlayer = scores[1]
-// middle column
+    // middle column
     // return true
-  } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[4] && scores[2] === scores[6]) {
+  } else if ((scores[2] === 'X' || scores[2] === 'O') && scores[2] === scores[4] && scores[2] === scores[6]) {
     winningPlayer = scores[2]
-// right diagonal
+    // right diagonal
     // return true
-  } else if ((scores[2]==='X'|| scores[2]==='O') && scores[2] === scores[5] && scores[2] === scores[8]) {
+  } else if ((scores[2] === 'X' || scores[2] === 'O') && scores[2] === scores[5] && scores[2] === scores[8]) {
     winningPlayer = scores[2]
-// right column
+    // right column
     // return true
-  } else if ((scores[3]==='X'|| scores[3]==='O') && scores[3] === scores[4] && scores[3] === scores[5]) {
+  } else if ((scores[3] === 'X' || scores[3] === 'O') && scores[3] === scores[4] && scores[3] === scores[5]) {
     winningPlayer = scores[3]
-// middle row
+    // middle row
     // return true
-  } else if ((scores[6]==='X'|| scores[6]==='O') && scores[6] === scores[7] && scores[6] === scores[8]) {
+  } else if ((scores[6] === 'X' || scores[6] === 'O') && scores[6] === scores[7] && scores[6] === scores[8]) {
     winningPlayer = scores[6]
     // return true
-// bottom row
+    // bottom row
   }
-// this whole block will:
- // 1. test for a tie
- // 2. confirm and report a winningPlayer
- // 3. also confirm that there is no winningPlayer
+  // this whole block will:
+  // 1. test for a tie
+  // 2. confirm and report a winningPlayer
+  // 3. also confirm that there is no winningPlayer
   if (scores.every(num => num !== '') && winningPlayer === '') {
     $('#note').text("It's a Tie! Play again!")
     return store.game.over === true
@@ -132,8 +133,8 @@ const onClickN = function (cellNum) {
   event.preventDefault()
   console.log(store)
   if (winningPlayer !== '')
-    // $('#note').text('Sorry, invalid move... try another!')
-    return
+  // $('#note').text('Sorry, invalid move... try another!')
+  { return }
 
   if (player === 'X') {
     if (scores[cellNum] === '' && test() === false) {
@@ -149,16 +150,16 @@ const onClickN = function (cellNum) {
     }
   } else {
     if (player === 'O') {
-    if (scores[cellNum] === '' && test() === false) {
-      scores[cellNum] = 'O'
-      $('#'+ cellNum).text('O')
-      api.updateGame(cellNum, player)
-        .then(ui.updateGameSuccess)
-        .catch(ui.updateGameFailure)
-      player = 'X'
-      ui.boardPosession(player)
-      test()
-      console.log(store)
+      if (scores[cellNum] === '' && test() === false) {
+        scores[cellNum] = 'O'
+        $('#' + cellNum).text('O')
+        api.updateGame(cellNum, player)
+          .then(ui.updateGameSuccess)
+          .catch(ui.updateGameFailure)
+        player = 'X'
+        ui.boardPosession(player)
+        test()
+        console.log(store)
       }
     }
   }

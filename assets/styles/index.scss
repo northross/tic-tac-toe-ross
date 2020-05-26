@@ -22,37 +22,37 @@ header {
   text-align: center;
 }
 
-.blackWithWhite {
-  border-style: groove;
-  border-width: 2px;
-  border-color: #181818;
-  background-color: #181818;
-  color: #ffffff;
-  box-shadow: none;
-  border: none !important;
-}
-
-.whiteWithBlack {
-  border-style: groove;
-  border-width: 2px;
-  border-color: #a33535;
-  background-color: #ffffff;
-  color: #181818;
-  box-shadow: none;
-  border: none !important;
-}
-
-input[type="submit"] {
-  border: none;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  color: #ffffff;
-  background-color: #181818;
-  overflow: hidden;
-  box-shadow: none;
-  border: none !important;
-}
+// .blackWithWhite {
+//   border-style: groove;
+//   border-width: 2px;
+//   border-color: #181818;
+//   background-color: #181818;
+//   color: #ffffff;
+//   box-shadow: none;
+//   border: none !important;
+// }
+//
+// .whiteWithBlack {
+//   border-style: groove;
+//   border-width: 2px;
+//   border-color: #a33535;
+//   background-color: #ffffff;
+//   color: #181818;
+//   box-shadow: none;
+//   border: none !important;
+// }
+//
+// input[type="submit"] {
+//   border: none;
+//   -webkit-border-radius: 10px;
+//   border-radius: 10px;
+//   cursor: pointer;
+//   color: #ffffff;
+//   background-color: #181818;
+//   overflow: hidden;
+//   box-shadow: none;
+//   border: none !important;
+// }
 // input[type="submit"]:before {
 //   background-image: -webkit-linear-gradient(left,
 //   rgba(255,255,255,.0)0%,
@@ -70,7 +70,6 @@ input[type="submit"] {
 
 .odd {
   color: #181818;
-
   background-color: rgba(181, 183, 187, .25);
   text-align: justify;
   margin: 15px 240px 80px 240px;
@@ -115,14 +114,23 @@ h1 {
   margin-bottom: 20px;
 }
 
+.0:hover, .1:hover, .2:hover, .3:hover, .4:hover, .5:hover, .6:hover, .7:hover, .8:hover {
+  background-color: yellow;
+}
+
 .grid div{
   font-family: arial;
   font-size: 12rem;
   text-align: auto;
 }
+
 .grid > div:nth-child(odd) {
   background-color: #fff;
   color: #181818;
+}
+
+.form-background {
+  background-color: rgba(181, 183, 187, 1);
 }
 
 // .grid > input {
