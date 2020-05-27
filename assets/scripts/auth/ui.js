@@ -67,7 +67,6 @@ const signInSuccess = function (data) {
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
   store.user = data.user
-  $('.grid').show()
   $('#change-password').show()
   $('#sign-out').show()
   $('#new-game').show()
