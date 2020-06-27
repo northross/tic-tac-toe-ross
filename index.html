@@ -16,78 +16,78 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start align-items-center">
+    <div id="sign-up" class="dropdown sign-up">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign up
+      </button>
+      <p id="message"></p>
+      <form class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormUsername">Username</label>
+          <input type="text" class="form-control" name="credentials[email]" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Confirm Password</label>
+          <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Sign up">Sign up</button>
+      </form>
+    </div>
+
+    <div id="sign-in" class="dropdown sign-in">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign in
+      </button>
+      <p id="signInMessage"></p>
+      <form class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormUsername">Username</label>
+          <input type="text" class="form-control" id="dropdownFormUsername" name="credentials[email]" placeholder="username">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="credentials[password]" placeholder="password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Sign in">Sign in</button>
+      </form>
+    </div>
+
+    <div id="change-password" class="dropdown change-password" style="display: none;">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Password</button>
+      <p id="passwordChangeMessage"></p>
+      <form id="change-password2" class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="text" class="form-control" name="passwords[old]" placeholder="Old password">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="passwords[new]" placeholder="New password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Change Password">Change Password</button>
+      </form>
+    </div>
+
+    <div id="sign-out" class="dropdown sign-out" style="display: none;">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Out</button>
+      <form class="dropdown-menu p-4 form-background">
+        <button type="submit" class="btn btn-dark" value="Sign Out">Sign Out</button>
+      </form>
+    </div>
+
+    <div>
+      <button id="new-game" class="btn btn-light" type="submit" value="New Game!">New Game!</button>
+    </div>
+
+  </nav>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start align-items-center">
-      <div id="sign-up" class="dropdown sign-up">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sign up
-        </button>
-        <p id="message"></p>
-        <form class="dropdown-menu p-4 form-background">
-          <div class="form-group">
-            <label for="dropdownFormUsername">Username</label>
-            <input type="text" class="form-control" name="credentials[email]" placeholder="example@email.com">
-          </div>
-          <div class="form-group">
-            <label for="dropdownFormPassword">Password</label>
-            <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
-          </div>
-          <div class="form-group">
-            <label for="dropdownFormPassword">Confirm Password</label>
-            <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Confirm Password">
-          </div>
-          <button type="submit" class="btn btn-dark" value="Sign up">Sign up</button>
-        </form>
-      </div>
-
-      <div id="sign-in" class="dropdown sign-in">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sign in
-        </button>
-        <p id="signInMessage"></p>
-        <form class="dropdown-menu p-4 form-background">
-          <div class="form-group">
-            <label for="dropdownFormUsername">Username</label>
-            <input type="text" class="form-control" id="dropdownFormUsername" name="credentials[email]" placeholder="username">
-          </div>
-          <div class="form-group">
-            <label for="dropdownFormPassword">Password</label>
-            <input type="password" class="form-control" name="credentials[password]" placeholder="password">
-          </div>
-          <button type="submit" class="btn btn-dark" value="Sign in">Sign in</button>
-        </form>
-      </div>
-
-      <div id="change-password" class="dropdown change-password" style="display: none;">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Password</button>
-        <p id="passwordChangeMessage"></p>
-        <form id="change-password2" class="dropdown-menu p-4 form-background">
-          <div class="form-group">
-            <label for="dropdownFormPassword">Password</label>
-            <input type="text" class="form-control" name="passwords[old]" placeholder="Old password">
-          </div>
-          <div class="form-group">
-            <label for="dropdownFormPassword">Password</label>
-            <input type="password" class="form-control" name="passwords[new]" placeholder="New password">
-          </div>
-          <button type="submit" class="btn btn-dark" value="Change Password">Change Password</button>
-        </form>
-      </div>
-
-      <div id="sign-out" class="dropdown sign-out" style="display: none;">
-        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Out</button>
-        <form class="dropdown-menu p-4 form-background">
-          <button type="submit" class="btn btn-dark" value="Sign Out">Sign Out</button>
-        </form>
-      </div>
-
-      <div>
-        <button id="new-game" class="btn btn-light" type="submit" value="New Game!">New Game!</button>
-      </div>
-
-    </nav>
+    <h1>Tic-Tac-Toe</h1>
   </header>
-  <h1>Tic-Tac-Toe</h1>
   <p id='note'></p>
 
   <!-- <form id="get-games" class="border">
