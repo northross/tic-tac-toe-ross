@@ -9,9 +9,6 @@ const signUp = function (credentials) {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
-    headers: {
-      'Access-Control-Allow-Origin': 'https://northross.github.io'
-    },
     data: credentials
   })
 }
@@ -20,9 +17,6 @@ const signIn = function (data) {
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
-    headers: {
-      'Access-Control-Allow-Origin': 'https://northross.github.io'
-    },
     data: data
   })
 }
