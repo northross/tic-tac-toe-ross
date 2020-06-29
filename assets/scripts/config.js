@@ -2,9 +2,8 @@
 
 let apiUrl
 const apiUrls = {
-  production: 'https://stormy-beyond-54635.herokuapp.com',
+  production: 'https://boiling-fortress-79428.herokuapp.com',
   development: 'http://localhost:4741'
-  // https://tic-tac-toe-wdi.herokuapp.com
 }
 
 if (window.location.hostname === 'localhost') {
