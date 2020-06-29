@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic-Tac-Toe</title>
+  <link href="https://fonts.googleapis.com/css?family=Audiowide|Poiret+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-start align-items-center">
+    <div id="sign-up" class="dropdown sign-up">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign up
+      </button>
+      <p id="message"></p>
+      <form class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormUsername">Username</label>
+          <input type="text" class="form-control" name="credentials[email]" placeholder="example@email.com">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="credentials[password]" placeholder="Password">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Confirm Password</label>
+          <input type="password" class="form-control" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Sign up">Sign up</button>
+      </form>
+    </div>
+
+    <div id="sign-in" class="dropdown sign-in">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sign in
+      </button>
+      <p id="signInMessage"></p>
+      <form class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormUsername">Username</label>
+          <input type="text" class="form-control" id="dropdownFormUsername" name="credentials[email]" placeholder="username">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="credentials[password]" placeholder="password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Sign in">Sign in</button>
+      </form>
+    </div>
+
+    <div id="change-password" class="dropdown change-password" style="display: none;">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Change Password</button>
+      <p id="passwordChangeMessage"></p>
+      <form id="change-password2" class="dropdown-menu p-4 form-background">
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="text" class="form-control" name="passwords[old]" placeholder="Old password">
+        </div>
+        <div class="form-group">
+          <label for="dropdownFormPassword">Password</label>
+          <input type="password" class="form-control" name="passwords[new]" placeholder="New password">
+        </div>
+        <button type="submit" class="btn btn-dark" value="Change Password">Change Password</button>
+      </form>
+    </div>
+
+    <div id="sign-out" class="dropdown sign-out" style="display: none;">
+      <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sign Out</button>
+      <form class="dropdown-menu p-4 form-background">
+        <button type="submit" class="btn btn-dark" value="Sign Out">Sign Out</button>
+      </form>
+    </div>
+
+    <div>
+      <button id="new-game" class="btn btn-light" type="submit" value="New Game!">New Game!</button>
+    </div>
+
+  </nav>
+  <header>
+    <h1>Tic-Tac-Toe</h1>
+  </header>
+  <p id='note'></p>
+
+  <!-- <form id="get-games" class="border">
+        <input type="submit" value="Total Games Played">
+      </form> -->
+  <div id="pregame">
+    <p class="rules">Rules of the Game...</p>
+    <p class="odd"> 1. Tic-Tac-Toe is played on a grid that is comprised of nine squares, between two players.
+      <br>2. Each of the two players is assigned a mark, an X or an O.
+      <br>3. Alternating turns, each player selects a square on the grid to place her mark.
+      <br>4. The first player to get three of her marks in a row (vertically, horizontally, or diagonally) is the winner.
+      <br>5. If all of the squares are full & there is no winner, the game is over - it's a tie.
+      <br>6. Everyone is a winner when they play Tic-Tac-Toe with a friend!
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="0" id=0></div>
+    <div class="1" id=1></div>
+    <div class="2" id=2></div>
+    <div class="3" id=3></div>
+    <div class="4" id=4></div>
+    <div class="5" id=5></div>
+    <div class="6" id=6></div>
+    <div class="7" id=7></div>
+    <div class="8" id=8></div>
+  </div>
+  <!-- <footer>
+        <form id="change-password" class="border">
+            <fieldset>
+              <input class="blackWithWhite" type="password" name="passwords[old]" placeholder="current password">
+              <input class="whiteWithBlack" type="password" name="passwords[new]" placeholder="new password">
+              <input type="submit" value="Change Password!" placeholder="Change Password">
+            </fieldset>
+        </form>
+
+        <form id="sign-out" class="border">
+              <input type="submit" value="Sign-Out!">
+        </form>
+
+      </footer> -->
+</body>
+
+</html>
